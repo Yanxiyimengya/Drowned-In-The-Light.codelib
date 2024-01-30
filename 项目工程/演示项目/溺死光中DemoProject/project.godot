@@ -11,10 +11,11 @@ config_version=5
 [application]
 
 config/name="溺死光中DemoProject"
-run/main_scene="res://Scenes/GameScenes/Demo/InitializeScene.tscn"
+run/main_scene="res://Assets/Scenes/GameScenes/Demo/InitializeScene.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
