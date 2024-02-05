@@ -11,7 +11,6 @@ enum STATE {
 var text : String = "";
 var typer_process : int = 0;					# 打字机文本进度
 var typer_speed : int = 4;						# 打字机速度
-var typer_process : int = 0;					# 打字机文本进度
 
 var char_node_list : Array[Control] = [];		# 字符节点列表
 var char_node_pool : Array[Control] = [];		# 字符节点池
