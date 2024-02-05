@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://chos3asfg6rj8"]
+[gd_scene load_steps=3 format=3 uid="uid://chos3asfg6rj8"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/GameScenes/Demo/GameInitialize.gd" id="1_ddcod"]
+[ext_resource type="PackedScene" uid="uid://bpbc6coptdnqw" path="res://Components/TextTyper/TextTyper.tscn" id="2_56gan"]
 
-[node name="Node" type="Node"]
+[node name="Node" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_ddcod")
+
+[node name="TextTyper" parent="." instance=ExtResource("2_56gan")]
+layout_mode = 1
+offset_left = 63.0
+offset_top = 129.0
+offset_right = 63.0
+offset_bottom = 129.0
+text = "{Hello 你好 世界}"
