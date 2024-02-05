@@ -34,7 +34,6 @@ func delete_char() -> void :
 	end_node.visible = false;
 	char_node_pool.push_back(end_node)
 	pass; # 在末尾移除一个字符节点实例
-
 func llex() -> Array[String] : 
 	var this_char : String = text[typer_process]; # 获取当前打字的字符
 	if( this_char != "{") : return [];
