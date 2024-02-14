@@ -15,6 +15,11 @@ run/main_scene="res://Assets/Scenes/GameScenes/Demo/InitializeScene.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalManager="*res://Components/GameModules/GlobalManager/GlobalManager.gd"
+SceneManager="*res://Components/GameModules/SceneManager/SceneManager.tscn"
+
 [display]
 
 window/stretch/mode="viewport"
@@ -23,3 +28,4 @@ window/stretch/mode="viewport"
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

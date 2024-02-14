@@ -26,7 +26,7 @@ var char_attribute = {
 	scale = Vector2.ONE,
 	font_assst = null,
 	font_size = 18,
-	voice = preload("res://Assets/Audios/Sounds/snd_break1.wav")
+	voice = null
 };
 
 @onready var audio_player := $VoicePlayer;
