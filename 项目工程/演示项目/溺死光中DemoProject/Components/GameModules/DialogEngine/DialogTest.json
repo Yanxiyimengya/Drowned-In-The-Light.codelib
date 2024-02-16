@@ -1,39 +1,29 @@
 {
-	"小娜ao 1" : {
-		"text" : "咦...",
-		"next" : ""
+	"ManTalk1" : {
+		"text" : "你好",
+		"goto" : null
 	},
-	"小娜ao 2" : {
-		"text" : "啊...",
-		"next" : "",
+	"ManTalk2" : {
+		"text" : "很高兴认识你",
 		"options" : {
-			"1" : {
-				"text" : "你说啥?"
+			"Regression1" : {
+				"text" : "嗯...",
+				"goto" : "ManTalk3"
 			},
-			"2" : {
-				"text" : "别急,慢慢来!"
+			"Regression2" : {
+				"text" : "我也很高兴认识你!",
+				"goto" : "ManTalk4"
 			}
 		}
 	},
-	"小娜ao 3" : {
-		"text" : "有一点事情...",
-		"next" : ""
+	"ManTalk3" : {
+		"text" : "你看起来有心事...怎么了?",
+		"goto" : null
+	},
+	"ManTalk4" : {
+		"text" : "哈哈,你真的很外向呢!",
+		"goto" : null
 	},
 	
-	"小娜ao 4" : {
-		"text" : "嗯...",
-		"next" : "小娜ao 5"
-	},
-	"小娜ao 5" : {
-		"text" : "我讨厌你!",
-		"next" : "the end"
-	},
-	"小娜ao 6" : {
-		"text" : "我喜欢你!",
-		"next" : "the end"
-	},
-	"the end" : {
-		"text" : "* 小娜跑走了",
-		"next" : null
-	},
+	"end" : {}
 }

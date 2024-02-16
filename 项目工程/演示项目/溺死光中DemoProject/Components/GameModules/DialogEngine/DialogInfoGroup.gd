@@ -1,7 +1,7 @@
 extends Resource;
 class_name DialogInfoGroup;
 
-# 存放一组对话的结构
+# 存放一组对话的结构 = null;
 
 var message_index : int = 0;	# 当前信息的索引
 var this_message : String = "";	# 当前对话信息的 Key
@@ -37,14 +37,14 @@ func get_this_message() -> DialogInfoMono :
 func get_next_message() -> DialogInfoMono : 
 	var this_message : DialogInfoMono = dialog_messages[message_index];
 	var next_message : DialogInfoMono;
-	if (this_message.next == "") :
+	if (this_message.next.is_empty()) : # if(this_message.next==""):
 		if (message_index + 1 >= dialog_messages.size()) :
-			return;
+			return null;
 		message_index += 1;
 		next_message = dialog_messages[message_index];
 	else :
 		if (!message_map.has(this_message.next)) :
-			return;
+			return null;
 		message_index = message_map[this_message.next];
 		next_message = dialog_messages[message_index];
 	return next_message;	# 获取下一条信息,指针自动跳转
