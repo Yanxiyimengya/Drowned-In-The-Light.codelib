@@ -4,7 +4,7 @@ extends Node;
 
 var configs = {}; # 游戏的配置设置
 var assect_engine : Object = preload("./AssetsEngine.gd").new();
-var sound_manager : Object = preload("./SoundManager/SoundManager.gd").new();
+var audio_manager : Object = preload("./AudioManager/AudioManager.gd").new();
 # 加载资源引擎
 
 func _ready():
