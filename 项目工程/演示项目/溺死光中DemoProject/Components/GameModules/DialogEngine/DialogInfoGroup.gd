@@ -4,7 +4,6 @@ class_name DialogInfoGroup;
 # 存放一组对话的结构 = null;
 
 var message_index : int = 0;	# 当前信息的索引
-var this_message : String = "";	# 当前对话信息的 Key
 var dialog_messages : Array[DialogInfoMono] = []; # 信息队列
 var message_map = {};		# 存储消息Key索引的HashMap
 
@@ -19,10 +18,9 @@ func add_message(key : String,text : String = "") -> DialogInfoMono :
 func remove_message(key : String) -> void :
 	if (!message_map.has(key)) :
 		return;
-	var message_index : int = message_map[key];
+	var index : int = message_map[key];
 	message_map.erase(key);
-	var dialog_info : DialogInfoMono = dialog_messages[message_index];
-	dialog_messages.remove_at(message_index);
+	dialog_messages.remove_at(index);
 	# 在队列中移除信息
 
 func jump_to(key : String) -> void : 

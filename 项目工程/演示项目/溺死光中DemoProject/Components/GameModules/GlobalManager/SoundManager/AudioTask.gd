@@ -17,6 +17,14 @@ var volume : float = 1.0 :
 	set(value) :
 		volume = value;
 		player_node.volume_db = value;
+var bus : StringName = &"Master" :
+	set(value) :
+		bus = value;
+		player_node.bus = value;
+var playing : bool = false :
+	get :
+		return player_node.playing;
+
 
 func _init() :
 	player_node = AudioStreamPlayer.new();
