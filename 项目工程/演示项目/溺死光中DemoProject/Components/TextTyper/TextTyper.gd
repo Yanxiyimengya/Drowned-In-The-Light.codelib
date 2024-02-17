@@ -31,7 +31,7 @@ var char_attribute = {
 
 @onready var audio_player := $VoicePlayer;
 
-func new_char(char : String) -> Label:
+func new_char(charactor : String) -> Label:
 	var char_node : Label = null;
 	if (char_node_pool.is_empty()) :
 		char_node = Label.new();				# 构造字符节点
@@ -40,7 +40,7 @@ func new_char(char : String) -> Label:
 	else :
 		char_node = char_node_pool.pop_back();	# 出栈
 		char_node.visible = true;
-	char_node.text = char[0];
+	char_node.text = charactor[0];
 	char_node.scale = char_attribute.scale;
 	char_node.self_modulate = char_attribute.color;
 	if (char_attribute.font_assst) :
@@ -113,7 +113,7 @@ func update() :
 	typer_process += 1;
 	pass;
 
-func _process(delta : float) :
+func _process(_delta : float) :
 	if (typer_process >= text.length()) :
 		return;
 	while (true) :
