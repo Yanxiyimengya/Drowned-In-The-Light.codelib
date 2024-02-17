@@ -14,10 +14,10 @@ func _init():
 var sys = DialogEngine.load_dialog_group_from_jsonfile("res://Components/GameModules/DialogEngine/DialogTest.json");
 func _ready():
 	pass;
-
+var audio
 func _input(e : InputEvent) :
 	if (e is InputEventKey && e.is_pressed() && e.is_action("ui_accept")) :
-		print(sys.get_this_message().text," ", sys.message_index);
-		print("next",sys.get_next_message());
-		var audio = GlobalManager.sound_manager.play_sound(load("res://Assets/Audios/Sounds/打开PC机.mp3"));
-		
+		SceneManager.change_scene_form_file("res://Assets/Scenes/GameScenes/Demo/Test.tscn")
+		#GlobalManager.sound_manager.play_suond(load("res://Assets/Audios/Sounds/SEE.mp3")).pitch = 2.0;
+		pass;
+

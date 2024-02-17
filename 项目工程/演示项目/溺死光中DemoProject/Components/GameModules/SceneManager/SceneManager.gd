@@ -1,9 +1,32 @@
-extends Control;
+extends Node;
 
-var mainScene = load(ProjectSettings.get_setting("application/run/main_scene"));
+signal change_scene_finished;
+
+var main_scene : PackedScene = load(ProjectSettings.get_setting("application/run/main_scene"));
 # 主场景
+
+# Insert Shots
+var in_shot : PackedScene = null;
+var out_shot : PackedScene = null;
 
 func change_scene_form_file(file_path : String) -> Error:
 	if (!FileAccess.file_exists(file_path)) :
 		return Error.FAILED;
-	return Error.OK;
+	var shot : Node;
+	if (in_shot != null) :
+		shot = in_shot.instantiate();
+		self.add_child(shot);
+		await shot.shot_finished;
+		shot.queue_free();
+	if (out_shot != null) :
+		shot = out_shot.instantiate();
+		self.add_child(shot);
+		get_tree().change_scene_to_file(file_path);
+		await shot.shot_finished;
+		shot.queue_free();
+	else :
+		get_tree().change_scene_to_file(file_path);
+	return Error.OK; # 跳转场景
+
+func change_scene_anim() :
+	pass;

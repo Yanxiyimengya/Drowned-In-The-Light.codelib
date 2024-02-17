@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://chos3asfg6rj8"]
+[gd_scene load_steps=3 format=3 uid="uid://chos3asfg6rj8"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/GameScenes/Demo/GameInitialize.gd" id="1_ddcod"]
+[ext_resource type="Texture2D" uid="uid://m53mee256udl" path="res://Assets/Images/background.jpg" id="2_rlsxl"]
 
 [node name="Node" type="Control"]
 layout_mode = 3
@@ -10,3 +11,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ddcod")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576.25, 327.25)
+scale = Vector2(0.592448, 0.59213)
+texture = ExtResource("2_rlsxl")
