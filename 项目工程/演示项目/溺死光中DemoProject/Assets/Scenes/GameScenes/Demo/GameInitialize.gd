@@ -11,7 +11,7 @@ func _init():
 	# 初始化:LoadResources
 	pass;
 
-var sys = DialogEngine.load_dialog_group_from_jsonfile("res://Components/GameModules/DialogEngine/DialogTest.json");
+var sys = DialogEngine.load_dialogue_group_from_jsonfile("res://Components/GameModules/DialogEngine/DialogTest.json");
 func _ready():
 	pass;
 var audio

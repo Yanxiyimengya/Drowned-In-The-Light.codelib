@@ -10,10 +10,10 @@ var option_items : Array[DialogOption] = [];
 var next : String = ""; # 在这条信息显示完成时,会跳跃到的对话索引,如果为 -1 则默认前进
 
 func add_option(item_text : String, goto : String = "") ->  DialogInfoMono :
-	var dialog_mono : DialogOption = DialogOption.new();
-	option_items.push_back(dialog_mono);
-	dialog_mono.text = item_text;
-	dialog_mono.goto = goto;
+	var dialogue_mono : DialogOption = DialogOption.new();
+	option_items.push_back(dialogue_mono);
+	dialogue_mono.text = item_text;
+	dialogue_mono.goto = goto;
 	return self; # 为对话信息添加一条选项分支
 
 func remove_option(slot :int) -> Error :
