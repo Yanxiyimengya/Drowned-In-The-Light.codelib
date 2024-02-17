@@ -18,15 +18,11 @@ func change_scene_form_file(file_path : String) -> Error:
 		self.add_child(shot);
 		await shot.shot_finished;
 		shot.queue_free();
+	get_tree().change_scene_to_file(file_path);
 	if (out_shot != null) :
 		shot = out_shot.instantiate();
 		self.add_child(shot);
-		get_tree().change_scene_to_file(file_path);
 		await shot.shot_finished;
 		shot.queue_free();
-	else :
-		get_tree().change_scene_to_file(file_path);
 	return Error.OK; # 跳转场景
 
-func change_scene_anim() :
-	pass;
