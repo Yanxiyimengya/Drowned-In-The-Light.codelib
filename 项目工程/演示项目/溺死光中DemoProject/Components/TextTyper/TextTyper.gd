@@ -109,7 +109,6 @@ func llex() -> Array[String] :
 			cmds.push_back(cmd_text);
 			break;
 		cmd_text += this_char;
-	print(cmds)
 	return cmds; # 对接下来的一段文本进行词法拆分
 
 func update() :
