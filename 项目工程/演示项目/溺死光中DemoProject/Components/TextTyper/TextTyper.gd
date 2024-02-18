@@ -84,6 +84,11 @@ func new_line() -> void :
 	if (max_size.y < typer_cursor_position.y) :
 		max_size.y = typer_cursor_position.y;
 
+func wait(timer: int) -> void:
+	wait_timer = timer;
+	typer_state = self.STATE.INSTANT; 
+	pass;
+
 func llex() -> Array[String] : 
 	var this_char : String = text[typer_process]; # 获取当前打字的字符
 	if( this_char != "{") : return [];
