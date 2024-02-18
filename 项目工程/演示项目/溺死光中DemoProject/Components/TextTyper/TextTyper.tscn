@@ -13,3 +13,5 @@ size_flags_vertical = 0
 script = ExtResource("1_nbrh3")
 
 [node name="VoicePlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="call_command" from="." to="." method="_on_call_command"]

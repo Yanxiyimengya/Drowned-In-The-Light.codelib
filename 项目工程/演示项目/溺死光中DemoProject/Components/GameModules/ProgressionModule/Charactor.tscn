@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxx4v21mbaq8y"]
 
-[ext_resource type="Script" path="res://Components/ProgressionModule/Character.gd" id="1_qks0v"]
+[ext_resource type="Script" path="res://Components/GameModules/ProgressionModule/Character.gd" id="1_qks0v"]
 
 [node name="Charactor" type="Node"]
 script = ExtResource("1_qks0v")
