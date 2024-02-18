@@ -183,6 +183,10 @@ func _on_call_command(cmd, args):
 			char_outline_color = change_color(char_outline_color, args);
 		"shadow_color" :
 			char_outline_color = change_color(char_shadow_color, args);
+		"font" :
+			char_font_assst = load(args[0]);
+		"font_size" :
+			char_font_size = int(args[0]);
 		"call" :
 			if (self.get(args[0]) is Callable) :
 				self.get(args[0]).callv(args.slice(1));
