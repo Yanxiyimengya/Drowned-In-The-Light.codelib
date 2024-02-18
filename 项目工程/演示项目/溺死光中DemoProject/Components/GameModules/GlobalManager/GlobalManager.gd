@@ -8,7 +8,7 @@ var audio_manager : Object = preload("./AudioManager/AudioManager.gd").new();
 # 加载资源引擎
 
 func _ready():
-	self.add_child(sound_manager);
+	self.add_child(audio_manager);
 	pass;
 
 func save_game() :

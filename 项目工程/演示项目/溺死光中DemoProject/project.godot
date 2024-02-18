@@ -22,6 +22,8 @@ SceneManager="*res://Components/GameModules/SceneManager/SceneManager.tscn"
 
 [display]
 
+window/size/viewport_width=980
+window/size/viewport_height=540
 window/stretch/mode="viewport"
 
 [filesystem]

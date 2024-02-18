@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://chos3asfg6rj8"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/GameScenes/Demo/GameInitialize.gd" id="1_ddcod"]
-[ext_resource type="Texture2D" uid="uid://m53mee256udl" path="res://Assets/Images/background.jpg" id="2_rlsxl"]
+[ext_resource type="PackedScene" uid="uid://kb5x01w5qjd5" path="res://Components/GameModules/DialogueEngine/DialogBox/DialogBox.tscn" id="2_xe5oo"]
 
 [node name="Node" type="Control"]
 layout_mode = 3
@@ -12,7 +12,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ddcod")
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(576.625, 320.625)
-scale = Vector2(0.600391, 0.598843)
-texture = ExtResource("2_rlsxl")
+[node name="DialogBox" parent="." instance=ExtResource("2_xe5oo")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 94.0
+offset_top = 266.0
+offset_right = 495.0
+offset_bottom = 387.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(2, 2)

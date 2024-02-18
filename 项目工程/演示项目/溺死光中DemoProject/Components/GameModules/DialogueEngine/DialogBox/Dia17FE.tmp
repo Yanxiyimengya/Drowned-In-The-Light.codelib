@@ -31,3 +31,9 @@ theme_override_constants/margin_bottom = 5
 
 [node name="TextTyper" parent="MarginContainer" instance=ExtResource("3_4rjyt")]
 layout_mode = 2
+text = "{instant}Hello {instant}World"
+typer_speed = null
+char_color = null
+char_scale = null
+char_space = null
+char_font_size = null
