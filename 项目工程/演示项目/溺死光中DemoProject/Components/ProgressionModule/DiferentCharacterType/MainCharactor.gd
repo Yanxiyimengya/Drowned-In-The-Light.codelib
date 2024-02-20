@@ -27,6 +27,7 @@ func delete_memory_vesitige(index: int):
 		memory_vestige_pool[i - 1] = memory_vestige_pool[i];
 		memory_vestige_pool[i] = null;
 	
+	calculate_memory_vestige_effecacy();
 	return memory_vestige_pool;
 
 func upgrade_level():
