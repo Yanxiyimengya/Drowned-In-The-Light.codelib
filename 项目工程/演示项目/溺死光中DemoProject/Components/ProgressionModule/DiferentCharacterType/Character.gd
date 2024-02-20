@@ -9,8 +9,10 @@ enum STATE {
 var name: String;
 var characteristic: Characteristic;
 var level;
+var base_data = BaseData.new();
+var data_improvement = DataImprovement.new();
 
-class base_data:
+class BaseData:
 	var hp: int;
 	var attack: int;
 	var defence: int;
@@ -19,21 +21,6 @@ class base_data:
 	var heal_improvement: float;
 	var speed: float;
 	var core_soul: float;
-
-class other_improvement:
-	class pure_data_improvement:
-		var hp_improvement: int;
-		var attack_improvement: int;
-		var defence_improvement: int;
-	
-	class percentage_improvement:
-		var hp_improvement: float;
-		var attack_improvement: float;
-		var defence_improvement: float;
-		var curisity_hit_posibility_improvement: float;
-		var curisity_hit_improvement_improvement: float;
-		var heal_improvemenet_improvement: float;
-		var speed_improvement: float;
 
 var skill_pool: Array = [];
 var buff_pool: Array[Buff] = [];
