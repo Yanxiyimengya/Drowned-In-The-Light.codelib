@@ -18,7 +18,12 @@ enum RARITY {
 var name: String;
 var kind: KIND;
 var data_improvement = DataImprovement.new();
-var generate_list: Dictionary;													#来源于指定配置文件，里面有各个表的材料。层级结构为：总表 -> 忆痕类型表 -> 忆痕词条 {词条名称，范围下限，范围上限，权重}
+var generate_list: Dictionary;													#来源于指定配置文件，里
+																				#面有各个表的材料。层级
+																				#结构为：总表 -> 忆痕类
+																				#型表 -> 忆痕词条 {词条
+																				#所属类别，词条名称，范
+																				#围下限，范围上限，权重}
 var generate_list_path: String = "";
 
 func new_memory_vestige(kind: KIND, rarity) -> MemoryVestige:
@@ -49,18 +54,19 @@ func define_attributes(name: String, rarity: RARITY) -> MemoryVestige:
 		var weight_sum = sum_weight(entry_list);
 		var rand_num = randf_range(0, weight_sum);
 		var ptr = 0;
-		var ptr_name: String = "";
 		
 		for entry in entry_list:
 			if (ptr >= rand_num): break;
 			var entry_at = entry_list.get(entry)
-			selected_entry_list[i] = entry_at
+			selected_entry_list[i] = entry_at;
 			ptr += entry_at.get("weight");
+			entry_at.get("weight").erase();
 			pass;
 		pass;
 	
 	for entry in selected_entry_list:
-		pass;
+		self.get(entry.get("percent_or_data")).get(entry.get("name")).set(randf_range(entry.get("min
+		\n_limit"), entry.get("max_limit")));									#设置对应键对应的值
 	
 	return memory_vestige;
 
