@@ -6,6 +6,7 @@ class_name CharacterAttributes;
 var hp : int = 0;							# 角色生命值
 var attack : float = 0.0;					# 角色攻击力
 var defense : float = 0.0;					# 角色防御力
+var hit_decount: float = 0.0				# 伤害减免
 var speed : float = 0.0;					# 角色速度
 var hit_probability : float = 0.0;			# 角色命中率
 var therapy : float = 0.0;					# 角色治疗量

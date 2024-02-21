@@ -5,6 +5,7 @@ var memory_vestige_pool: Array[MemoryVestige];
 var attack_improvement: int;
 var keepsake_is_given: bool;
 var keepsake_effecacy: DataImprovement;
+var upgrade_list: Dictionary;
 
 func calculate_memory_vestige_effecacy():
 	data_improvement.clear();
@@ -29,23 +30,3 @@ func delete_memory_vesitige(index: int):
 	
 	calculate_memory_vestige_effecacy();
 	return memory_vestige_pool;
-
-func upgrade_level():
-	level += 1;
-	match level:
-		2: base_data.hp += 40;
-		4: base_data.attack += 20;
-		6: base_data.defence += 20;
-		8: base_data.hp += 60;
-		10:
-			base_data.attack += 40;
-			base_data.curisity_hit_posibolity += 5;
-			base_data.basheal_improvement += 5;
-		12: base_data.defence += 40;
-		14: base_data.hp += 100;
-		16: base_data.attack += 40;
-		18: base_data.defence += 40;
-		20:
-			base_data.curisity_hit_posibolity += 5;
-			base_data.curisity_hit_improvement += 5;
-			base_data.core_soul += 5;
