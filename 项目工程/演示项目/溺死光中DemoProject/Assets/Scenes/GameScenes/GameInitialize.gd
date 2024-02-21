@@ -15,9 +15,11 @@ var sys = DialogEngine.load_dialogue_group_from_jsonfile("res://Components/GameM
 func _ready():
 	pass;
 var audio
+var event = BaseEvent.new();
 func _input(e : InputEvent) :
 	if (e is InputEventKey && e.is_pressed() && e.is_action("ui_accept")) :
-		SceneManager.change_scene_form_file("res://Assets/Scenes/GameScenes/Demo/Test.tscn")
+		# SceneManager.change_scene_form_file("res://Assets/Scenes/GameScenes/Demo/Test.tscn")
 		#GlobalManager.sound_manager.play_suond(load("res://Assets/Audios/Sounds/SEE.mp3")).pitch = 2.0;
+		event.trigger_event(["只因你太美"]);
 		pass;
 

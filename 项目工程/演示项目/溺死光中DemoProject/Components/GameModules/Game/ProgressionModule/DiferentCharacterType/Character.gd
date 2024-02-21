@@ -1,4 +1,4 @@
-extends BaseCharacter;
+extends Resource;
 class_name Character;
 
 enum STATE {
@@ -10,7 +10,6 @@ var characteristic: Characteristic;
 var data_improvement = DataImprovement.new();
 var skill_pool: Array = [];
 var buff_pool: Array[Buff] = [];
-var upgrade_dict: Dictionary;
 
 func get_skill() -> Array:
 	return skill_pool;

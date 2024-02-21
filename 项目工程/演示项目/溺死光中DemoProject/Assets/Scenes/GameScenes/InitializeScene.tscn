@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://chos3asfg6rj8"]
 
-[ext_resource type="Script" path="res://Assets/Scenes/GameScenes/Demo/GameInitialize.gd" id="1_ddcod"]
-[ext_resource type="PackedScene" uid="uid://kb5x01w5qjd5" path="res://Components/GameModules/DialogueEngine/DialogBox/DialogBox.tscn" id="2_xe5oo"]
+[ext_resource type="Script" path="res://Assets/Scenes/GameScenes/GameInitialize.gd" id="1_csfh6"]
+[ext_resource type="PackedScene" uid="uid://kb5x01w5qjd5" path="res://Components/GameModules/DialogueEngine/DialogBox/DialogBox.tscn" id="2_8cb1u"]
 
 [node name="Node" type="Control"]
 layout_mode = 3
@@ -10,9 +10,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ddcod")
+script = ExtResource("1_csfh6")
 
-[node name="DialogBox" parent="." instance=ExtResource("2_xe5oo")]
+[node name="DialogBox" parent="." instance=ExtResource("2_8cb1u")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0

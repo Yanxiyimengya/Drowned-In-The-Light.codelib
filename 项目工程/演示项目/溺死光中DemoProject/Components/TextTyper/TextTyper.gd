@@ -19,7 +19,7 @@ signal call_command(cmd : String, args : Array[String]);
 @export var char_outline_size : int = 1;
 @export_group("text_attribute/shadow")
 @export var char_shadow_color : Color = Color(0, 0, 0, 1);
-@export var char_shadow_offset : Vector2 = Vector2.ZERO;
+@export var char_shadow_offset : Vector2i = Vector2i.ZERO;
 @export_group("", "")
 
 enum STATE {
@@ -162,7 +162,7 @@ func _on_call_command(cmd, args):
 				else :	typer_state = STATE.PROCESS;
 			typer_state = STATE.PROCESS if (typer_state==STATE.INSTANT) else STATE.INSTANT;
 		"wait" :
-			wait_timer = float(args[0]);
+			wait_timer = int(args[0]);
 			if (wait_timer > 0) :
 				typer_state = STATE.WAIT;
 			else :

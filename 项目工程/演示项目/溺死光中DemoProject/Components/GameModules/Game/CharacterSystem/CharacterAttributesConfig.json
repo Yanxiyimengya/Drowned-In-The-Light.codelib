@@ -1,0 +1,15 @@
+{
+	"hp" : 0.0,
+	"attack" : 0.0,
+	"defense" : 0.0,
+	"resistance" : 0.0,
+	"hit_decount": 0.0,
+	"speed" : 0.0,
+	"hit_probability" : 0.0,
+	"therapy" : 0.0,
+	"therapy_fixed" : 0.0,
+	"critical_hit" : 0.0,
+	"critical_hit_fixed" : 0.0,
+	"critical_hit_injury" : 0.0,
+	"soul_core" : 0.0,
+}
