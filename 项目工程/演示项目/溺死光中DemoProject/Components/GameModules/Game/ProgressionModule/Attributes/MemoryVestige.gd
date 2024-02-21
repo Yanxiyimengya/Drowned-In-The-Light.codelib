@@ -18,13 +18,19 @@ enum RARITY {
 var name: String;
 var kind: KIND;
 var data_improvement = DataImprovement.new();
-var generate_list: Dictionary;					#指向指定配置文件，里面有各个表的材料。
+var generate_list: Dictionary;													#来源于指定配置文件，里面有各个表的材料。层级结构为：总表 -> 忆痕类型表 -> 忆痕词条 {词条名称，范围下限，范围上限，权重}
+var generate_list_path: String = "";
 
 func new_memory_vestige(kind: KIND, rarity) -> MemoryVestige:
 	match kind:
 		0: return new_collect_memory_vestige(rarity);
-		1: return new_growth_memory_vestige(rarity);
+		1: return define_attributes("collect", rarity);
+		2: return define_attributes("growth", rarity);
+		3: return define_attributes("infliration", rarity);
+		4: return define_attributes("distribution", rarity);
+		5: return define_attributes("conbination", rarity);
 		_: return;
+	
 
 func new_collect_memory_vestige(rarity: RARITY) -> MemoryVestige:
 	var memory_vestige = MemoryVestige.new();
@@ -34,22 +40,33 @@ func new_collect_memory_vestige(rarity: RARITY) -> MemoryVestige:
 	memory_vestige.percentage_improvement.speed_improvement += randf_range(5.0, 10.0) as int;
 	return memory_vestige;
 
-func new_growth_memory_vestige(rarity: RARITY) -> MemoryVestige:
-	var memory_vestige = MemoryVestige.new();
-	var growth_list = generate_list.get("growth");
+func define_attributes(name: String, rarity: RARITY) -> MemoryVestige:
+	var memory_vestige: MemoryVestige = MemoryVestige.new();
+	var entry_list: Dictionary = generate_list.get(name);						# 存放了具体忆痕种类的升级词条的字典
+	var selected_entry_list: Array[Dictionary];
+	
+	for i in range(0, rarity + 3):
+		var weight_sum = sum_weight(entry_list);
+		var rand_num = randf_range(0, weight_sum);
+		var ptr = 0;
+		var ptr_name: String = "";
+		
+		for entry in entry_list:
+			if (ptr >= rand_num): break;
+			var entry_at = entry_list.get(entry)
+			selected_entry_list[i] = entry_at
+			ptr += entry_at.get("weight");
+			pass;
+		pass;
+	
+	for entry in selected_entry_list:
+		pass;
+	
 	return memory_vestige;
 
-func new_infliration_memory_vestige(rarity: RARITY) -> MemoryVestige:
-	var memory_vestige = MemoryVestige.new();
-	var growth_list = generate_list.get("infliration");
-	return memory_vestige;
-
-func new_distribution_memory_vestige(rarity: RARITY) -> MemoryVestige:
-	var memory_vestige = MemoryVestige.new();
-	var growth_list = generate_list.get("distribution");
-	return memory_vestige;
-
-func new_conbination_memory_vestige(rarity: RARITY) -> MemoryVestige:
-	var memory_vestige = MemoryVestige.new();
-	var growth_list = generate_list.get("conbination");
-	return memory_vestige;
+func sum_weight(list: Dictionary) -> int:
+	var sum: int = 0;
+	for member in list:															# member：每个表中的具体词条中的内容
+		if (!member.has("weight")): continue;
+		sum += member.get("weight");
+	return sum;
