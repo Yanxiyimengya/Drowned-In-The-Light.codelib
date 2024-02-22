@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://kb5x01w5qjd5"]
 
 [ext_resource type="Texture2D" uid="uid://mn8wtuuwhheo" path="res://Assets/Images/GUI/DialogueBorder.png" id="1_oljm6"]
-[ext_resource type="Script" path="res://Components/GameModules/DialogueEngine/DialogBox/DialogBox.gd" id="2_tsbtu"]
+[ext_resource type="Script" path="res://Components/GameModules/GamePlay/DialogueEngine/对话框/DialogBox.gd" id="2_tsbtu"]
 [ext_resource type="PackedScene" uid="uid://bpbc6coptdnqw" path="res://Components/TextTyper/TextTyper.tscn" id="3_4rjyt"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uuvv7"]

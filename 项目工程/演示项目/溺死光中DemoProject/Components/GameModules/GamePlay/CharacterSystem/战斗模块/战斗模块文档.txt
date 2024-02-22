@@ -1,0 +1,32 @@
+
+注意事项
+战斗模块的敌人信息不是BaseCharacter,而是BaseBattleCharacter
+进入战斗先备份一份所有角色BaseCharacter在BattleManager(包括他们的技能,饰品类)
+进入战斗,由于Buff等会对角色属性进行修改变动，或是为角色添加数据,这里才需要备份避免结束战斗后加成依然存在
+结束战斗之后还原角色信息于 BaseCharacter
+
+注意:饰品之类的属性,提升在养成模块时被装备就已有效果了,战斗模块不需要额外推导饰品加成
+战斗模块会调用饰品类的特定回调,这个操作是由BattleManager操控GamePlay(玩法模块)的Events系统实现的
+战斗模块会调用BaseCharacter角色类的特定回调,这个操作也是由BattleManager操控GamePlay(玩法模块)的Events系统实现的
+战斗模块会调用BaseCharacterSkill角色类的特定回调,这个操作同上
+
+BaseBattleCharacter类:
+	由一个 BaseCharacter 类构造
+	维护战斗有关的角色数据信息
+	提供方法接口实现功能
+
+BaseCharacterAdditionalEffect类:
+	附加于某角色的Buff/Debuff属性
+	提供方法接口实现功能
+
+事件常量:
+	OnHit # 某一角色受伤
+	OnDeath # 某一角色被击败
+	OnAttack # 某一角色攻击行为
+	OnAddedBuff # 某一角色被添加指定Buff
+	OnRemovedBuff # 某一角色被移除指定Buff
+	
+	BattleEnd # 战斗结束
+	BattleStart # 战斗开始
+	NewTurn # 新一轮回合开始
+	...

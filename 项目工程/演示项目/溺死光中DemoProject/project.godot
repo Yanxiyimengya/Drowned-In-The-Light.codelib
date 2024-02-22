@@ -29,7 +29,7 @@ window/stretch/mode="viewport"
 [file_customization]
 
 folder_colors={
-"res://Components/GameModules/Game/CharacterSystem/": "red"
+"res://Components/GameModules/GamePlay/CharacterSystem/": "pink"
 }
 
 [filesystem]

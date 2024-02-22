@@ -7,6 +7,7 @@ class_name BaseEvent;
 signal trigger_evented;
 
 var type : String = "";				# 事件类型
+var exposure : bool = false;		# 当其设置为 Ture 时,这个事件触发事件回调时会为第一个参数添加它本身
 var register_list : Array[EventRegisteredObject] = [];		# 注册事件的对象列表
 
 func register_method(object : Object, method_id : String) -> EventRegisteredObject :
@@ -27,6 +28,8 @@ func unregister_method(_object : Object, _method_id : String) -> void :
 
 func trigger_event(arguments : Array = []) -> void :
 	trigger_evented.emit();
+	if (exposure) :
+		arguments.push_front(self);
 	for reg_object in register_list :
 		reg_object.call_method(arguments);
 	pass; # 触发这个事件

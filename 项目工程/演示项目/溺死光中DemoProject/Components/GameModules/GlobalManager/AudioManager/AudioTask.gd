@@ -25,7 +25,6 @@ var playing : bool = false :
 	get :
 		return player_node.playing;
 
-
 func _init() :
 	player_node = AudioStreamPlayer.new();
 	player_node.finished.connect(func() :

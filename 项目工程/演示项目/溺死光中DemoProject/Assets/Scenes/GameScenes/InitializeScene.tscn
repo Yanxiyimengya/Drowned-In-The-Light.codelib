@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://chos3asfg6rj8"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/GameScenes/GameInitialize.gd" id="1_csfh6"]
-[ext_resource type="PackedScene" uid="uid://kb5x01w5qjd5" path="res://Components/GameModules/DialogueEngine/DialogBox/DialogBox.tscn" id="2_8cb1u"]
+[ext_resource type="PackedScene" uid="uid://kb5x01w5qjd5" path="res://Components/GameModules/GamePlay/DialogueEngine/对话框/DialogBox.tscn" id="2_8cb1u"]
 
 [node name="Node" type="Control"]
 layout_mode = 3

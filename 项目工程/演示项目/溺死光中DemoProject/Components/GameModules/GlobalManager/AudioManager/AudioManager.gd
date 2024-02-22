@@ -2,7 +2,7 @@ extends Node;
 
 # 音频管理器
 
-var audio_tasks_map = {};
+var audio_tasks_map :Dictionary = {};
 var audio_tasks_pool : Array[AudioTask] = [];
 
 func play_suond(stream : AudioStream) -> AudioTask :
