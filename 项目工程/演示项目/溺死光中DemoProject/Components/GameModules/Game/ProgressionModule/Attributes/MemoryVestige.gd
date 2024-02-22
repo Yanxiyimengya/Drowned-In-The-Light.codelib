@@ -24,7 +24,20 @@ var generate_list: Dictionary;													#来源于指定配置文件，里
 																				#型表 -> 忆痕词条 {词条
 																				#所属类别，词条名称，范
 																				#围下限，范围上限，权重}
-var generate_list_path: String = "";
+
+func load_generate_list(file_path: String) -> Dictionary:
+	if (!FileAccess.file_exists(file_path)):
+		return {};
+	
+	var file = FileAccess.open(file_path, FileAccess.READ);
+	var file_str: String = file.get_buffer(file.get_length()).get_string_from_utf8();
+	var json = JSON.parse_string(file_str);
+	file.close();
+	
+	if (json == null):
+		return {};
+	
+	return json;
 
 func new_memory_vestige(kind: KIND, rarity) -> MemoryVestige:
 	match kind:
