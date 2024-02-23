@@ -38,7 +38,7 @@ func call_method(arguments : Array = []) -> void :
 	args.append_array(arguments);
 	# 构造参数数组
 	if (!callable.is_null()) :
-		callable.callv(args);
+		var aa = callable.callv(args);
 	elif (object == null || method_id == null) :
 		pass;
 	return;

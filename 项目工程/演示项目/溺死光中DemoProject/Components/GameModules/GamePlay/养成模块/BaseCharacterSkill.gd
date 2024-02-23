@@ -1,4 +1,4 @@
-extends RefCounted;
+extends Resource;
 class_name BaseCharacterSkill;
 
 # 角色的技能基类
@@ -22,4 +22,4 @@ func unleash_skill(_master : BaseBattleCharacter, _target : Array[BaseBattleChar
 	# [回调]当这个技能在战斗中被使用
 	# _master : 使用者
 	# _target : 目标角色数组
-	
+

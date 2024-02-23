@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cekwdhpbyy15t"]
 
-[ext_resource type="Script" path="res://Components/GameModules/SceneManager/Shots/Shot.gd" id="1_pb4tg"]
+[ext_resource type="Script" path="res://Components/GameModules/GlobalManager/SceneManager/Shots/Shot.gd" id="1_pb4tg"]
 
 [sub_resource type="Animation" id="Animation_fyyy5"]
 length = 0.001

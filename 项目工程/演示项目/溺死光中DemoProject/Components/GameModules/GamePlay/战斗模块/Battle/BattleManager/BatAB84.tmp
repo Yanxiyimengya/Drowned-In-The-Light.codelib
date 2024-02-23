@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://biai3b1dlrfhc"]
+
+[ext_resource type="Script" path="res://Components/GameModules/GamePlay/战斗模块/Battle/BattleManager/BattleManager.gd" id="1_pxkah"]
+
+[node name="BattleManager" type="Node"]
+script = ExtResource("1_pxkah")

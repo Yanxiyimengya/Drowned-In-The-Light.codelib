@@ -13,13 +13,25 @@ func _init():
 
 var sys = DialogEngine.load_dialogue_group_from_jsonfile("res://Components/GameModules/DialogEngine/DialogTest.json");
 func _ready():
+	var char = LittleGuy.new();
+	char.accessories_list.append(BaseAccessory.new());
+	var args : Array[BaseCharacter] = [char];
+	var args2 : Array[BaseCharacter] = [];
+	aaa = GlobalManager.game_play.battle_manager.instantiate();
+	add_child(aaa)
+	aaa.start_battle(args,args2);
 	pass;
 var audio
 var event = BaseEvent.new();
+
+
+var aaa;
+var bbb;
+
 func _input(e : InputEvent) :
 	if (e is InputEventKey && e.is_pressed() && e.is_action("ui_accept")) :
 		# SceneManager.change_scene_form_file("res://Assets/Scenes/GameScenes/Demo/Test.tscn")
 		#GlobalManager.sound_manager.play_suond(load("res://Assets/Audios/Sounds/SEE.mp3")).pitch = 2.0;
-		event.trigger_event(["只因你太美"]);
+		
 		pass;
 
