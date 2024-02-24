@@ -32,4 +32,4 @@ func trigger_event(arguments : Array = []) -> void :
 		arguments.push_front(self);
 	for reg_object in register_list :
 		reg_object.call_method(arguments);
-	pass; # 触发这个事件
+	return; # 触发这个事件

@@ -14,6 +14,6 @@ func out_worn(_master : BaseCharacter) -> void :
 	pass;
 	# [回调]饰品取消佩戴的时候触发 传入持有人对象的实例
 
-func on_battle_event(_master : BaseBattleCharacter, _event : BattleEvent) :
+func on_battle_event(_master : BattleCharacter, _event : BattleEvent) :
 	pass;
 	# [回调]饰品的更新回调,当饰品被佩戴进入战斗时会注册此事件在角色饰品回调

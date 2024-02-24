@@ -17,7 +17,7 @@ func has_tag(tag_name : String) -> void :
 	return tags.has(tag_name);
 	# 检查是否拥有指定标签
 
-func unleash_skill(_master : BaseBattleCharacter, _target : Array[BaseBattleCharacter]) -> void :
+func unleash_skill(_master : BattleCharacter, _target : Array[BattleCharacter]) -> void :
 	pass;
 	# [回调]当这个技能在战斗中被使用
 	# _master : 使用者

@@ -1,10 +1,18 @@
-extends RefCounted;
-class_name BaseBattleCharacter;
+extends Node;
+class_name BattleCharacter;
 
 # 玩家角色的战斗数据实例基类
 
+var battle_event : BattleEvent = null :
+	set(value) :
+		if (value != null) :
+			battle_event = value;
+			for accessories in character_data.accessories_list :
+				var reg_obj : EventRegisteredObject = battle_event.register_method(accessories, "on_battle_event");
+				if (reg_obj) :	reg_obj.bind_argument(self);
+				# 为饰品订阅事件
 var character_data : BaseCharacter = null;				# 角色的数据
-var buff_pool : Array[BaseCharacterAdditionalEffect] = [];	# 角色的Buff池
+var buff_pool : Dictionary = {};	# 角色的Buff池
 var skill_list : Array[BaseCharacterSkill] = [];		# 角色的技能列表
 
 var maxhp : float = 0.0;							# 角色最大HP
@@ -19,11 +27,11 @@ var current_critical_hit_probaility : float = 0.0	# 角色当前暴击概率
 var current_critical_hit_injury : float = 0.0		# 角色当前暴击伤害倍率
 var current_soul_core : float = 0.0					# 角色当前核灵
 
-func _init(character : BaseCharacter) :
-	character_data = character.duplicate(true); # 克隆角色
-	character_data.accessories_list = character.accessories_list.duplicate(true);
-	character_data.skill_list = character.skill_list.duplicate(true);
-	# 计算血量
+func _init(_character : BaseCharacter, _battle_event : BattleEvent) :
+	character_data = _character.duplicate(true); # 克隆角色
+	character_data.accessories_list = _character.accessories_list.duplicate(true);
+	character_data.skill_list = _character.skill_list.duplicate(true);
+	
 	update_attributes();
 	current_hp = maxhp;
 	
@@ -34,10 +42,10 @@ func _init(character : BaseCharacter) :
 			count += 1;
 		# 验证技能是否存在于技能池,并将其push进技能列表
 	
-	# 计算属性
+	battle_event = _battle_event; # 战斗事件实例
 	pass; # 构造函数,初始化一个 BattleCharacter
 
-func update_attributes() :
+func update_attributes() -> void :
 	maxhp = character_data.base_attributes.attributes.hp * character_data.bonus_attributes.attributes.hp;
 	var attributes : CharacterAttributes = character_data.base_attributes.mul(character_data.bonus_attributes);
 	current_attack = attributes.attack;
@@ -49,11 +57,17 @@ func update_attributes() :
 	current_critical_hit_probaility = attributes.critical_hit_probaility;
 	current_critical_hit_injury = attributes.critical_hit_injury;
 	current_soul_core = attributes.soul_core;
-	pass;
 	# 更新计算数值
 
-func register_events(battle_event : BattleEvent) :
-	for accessories in character_data.accessories_list :
-		var aa = battle_event.register_method(accessories, "on_battle_event").bind_argument(self);
-		aa.call_method([]);
-	# 注册饰品的回调事件
+func add_additional_effect(effect_inst : BaseAdditionalEffect) :
+	if (buff_pool.has(effect_inst)) :
+		buff_pool[effect_inst].buff_time += effect_inst.buff_time;
+		return;
+	var buff_ins = BaseBattleAdditionalEffect.new(self, effect_inst);
+	self.add_child(buff_ins);
+	buff_pool[effect_inst] = buff_ins;
+	if (battle_event != null) :
+		var reg_obj : EventRegisteredObject = battle_event.register_method(effect_inst, "on_battle_event");
+		if (reg_obj) :	reg_obj.bind_argument(self);
+		# 订阅事件
+

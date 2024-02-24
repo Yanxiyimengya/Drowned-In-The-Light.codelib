@@ -17,6 +17,6 @@ static var skill_pool : Dictionary = {};		# 角色技能池 Dictionary[BaseChara
 var accessories_list : Array[BaseAccessory] = [];		# 角色持有饰品列表
 var skill_list : Array[BaseCharacterSkill] = [];		# 角色持有技能列表
 
-func on_battle_event(char : BaseBattleCharacter, event : BattleEvent) :
+func on_battle_event(char : BattleCharacter, event : BattleEvent) :
 	pass;
 	# 在战斗时 接收到某一事件时触发
