@@ -13,16 +13,12 @@ func _init():
 
 var sys = DialogEngine.load_dialogue_group_from_jsonfile("res://Components/GameModules/DialogEngine/DialogTest.json");
 func _ready():
-	var char = LittleGuy.new();
-	char.accessories_list.append(BaseAccessory.new());
-	var args : Array[BaseCharacter] = [char];
-	var args2 : Array[BaseCharacter] = [];
-	aaa = GlobalManager.game_play.battle_manager.instantiate();
-	add_child(aaa)
-	aaa.start_battle(args,args2);
+	
+	var bt : PackedScene = GamePlay.battle_manager;
+	aaa = bt.instantiate();
+	add_child(aaa);
+	aaa.add_character(BaseCharacter.new(), 0);
 	pass;
-var audio
-var event = BaseEvent.new();
 
 
 var aaa;

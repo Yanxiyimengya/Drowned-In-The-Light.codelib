@@ -4,3 +4,11 @@
 
 [node name="BattleManager" type="Node"]
 script = ExtResource("1_pxkah")
+
+[node name="CharactersLayer" type="CanvasLayer" parent="."]
+
+[node name="EnemyCharacters" type="Node2D" parent="CharactersLayer"]
+
+[node name="FriendlyCharacters" type="Node2D" parent="CharactersLayer"]
+
+[connection signal="next_turn" from="." to="." method="_on_next_turn"]

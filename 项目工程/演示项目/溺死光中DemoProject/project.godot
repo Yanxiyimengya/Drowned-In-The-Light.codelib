@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalManager="*res://Components/GameModules/GlobalManager/GlobalManager.gd"
 SceneManager="*res://Components/GameModules/GlobalManager/SceneManager/SceneManager.tscn"
+GamePlay="*res://Components/GameModules/GamePlay/GamePlay.gd"
 
 [display]
 
@@ -29,7 +30,7 @@ window/stretch/mode="viewport"
 [file_customization]
 
 folder_colors={
-"res://Components/GameModules/GamePlay/角色/": "pink"
+"res://Components/GameModules/GamePlay/战斗模块/": "red"
 }
 
 [filesystem]
