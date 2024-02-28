@@ -2,6 +2,7 @@ extends Node;
 
 # 负责管理战斗的战斗管理器
 signal next_turn; # 回合结束
+signal on_hit;
 
 var turn_count : int = 0;	# 回合计数
 
@@ -10,7 +11,8 @@ var enemy_characters : Array[BattleCharacter] = [];
 # 战斗时角色实例
 
 var event : Dictionary = {
-	next_turn = EventCaller.new()
+	next_turn = EventCaller.new(),
+	on_hit = EventCaller.new(),
 };
 
 func _on_battle_start() :
@@ -34,7 +36,8 @@ func _process(_delta):
 func add_character(character_data : BaseCharacter, forces : int = 0) :
 	var character : BattleCharacter = BattleCharacter.new();
 	character.battle_manager = self;
-	character.character_data = character_data.duplicate(true);
+	character.base_character_data = character_data;		# 注，此处做修改，具体看BaseBattleCharacter那边，私以为可以一定程度上解决角色复制无用信息问题。
+	character.char_init();
 	event.next_turn.register_object(character.character_data).bind(character);
 	if (forces == 0) :
 		friendly_characters.append(character);

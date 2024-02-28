@@ -36,13 +36,15 @@ func register_object(obj : Object) -> RegisterObject :
 
 class RegisterObject :
 	extends RefCounted;
+
 	var object : Object = null;
 	var bind_arguments : Array = [];
+
 	func trigger(method_name : String, args : Array = []) :
 		if (!object.has_method(method_name)) :
 			return;
 		args.append_array(bind_arguments);
 		object.get(method_name).callv(args);
+	
 	func bind(arg) :
 		bind_arguments.push_back(arg);
-	pass;

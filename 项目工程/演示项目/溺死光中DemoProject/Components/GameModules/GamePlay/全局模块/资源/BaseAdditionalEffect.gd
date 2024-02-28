@@ -15,3 +15,10 @@ func added(_master : BattleCharacter) -> void :
 
 func removed(_master : BattleCharacter) -> void :
 	pass; # [回调]效果被移除时触发
+
+func turn_start_effect(_master: BattleCharacter) -> void:
+	pass;# [回调]回合开始时触发
+
+# [回调]回合结束时触发
+func turn_end_effect(_master: BattleCharacter) -> void:
+	pass;
