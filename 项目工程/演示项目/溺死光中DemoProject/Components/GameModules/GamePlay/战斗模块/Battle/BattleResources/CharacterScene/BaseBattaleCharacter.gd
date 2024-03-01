@@ -37,5 +37,6 @@ func char_init():
 		battle_skill_pool[skill] = base_character_data.skill_pool[skill].duplicate();
 		battle_manager.event.register_object(battle_skill_pool[skill]).bind(self);
 
-func on_hit(_damage: float):
+func on_hit(damage: float):
+	battle_character_attributes.hp -= damage;
 	pass;
