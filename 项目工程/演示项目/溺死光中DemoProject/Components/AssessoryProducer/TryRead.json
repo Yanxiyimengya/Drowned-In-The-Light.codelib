@@ -1,0 +1,33 @@
+{
+    "死灭回游": [
+        {
+            "name": "attack",
+            "kind": "base_attribute",
+            "lower_limit": 100,
+            "upper_limit": 150,
+            "weight": 2
+        },
+        {
+            "name": "defense",
+            "kind": "base_attribute",
+            "lower_limit": 100,
+            "upper_limit": 150,
+            "weight": 2
+        },
+        {
+            "name": "speed",
+            "kind": "base_attribute",
+            "lower_limit": 100,
+            "upper_limit": 150,
+            "weight": 2
+        },
+        {
+            "name": "soul_core",
+            "kind": "base_attribute",
+            "lower_limit": 100,
+            "upper_limit": 150,
+            "weight": 2
+        }
+    ],
+    "你好世界": {}
+}
