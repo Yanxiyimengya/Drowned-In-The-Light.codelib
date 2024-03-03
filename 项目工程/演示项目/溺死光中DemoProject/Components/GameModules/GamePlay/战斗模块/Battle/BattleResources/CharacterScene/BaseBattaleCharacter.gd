@@ -14,16 +14,21 @@ func _ready():
 	pass;
 
 func add_effect(effect_inst : BaseAdditionalEffect) : 
-	if (effect_table.has(effect_inst.effect_name)) :
-		effect_table[effect_inst.effect_name].wait_time += effect_inst.effect_time;
+	if (effect_table.has(effect_inst.type)) :
+		effect_table[effect_inst.type].wait_time += effect_inst.effect_time;
 		pass;
 	var effect_node : BaseBattleAdditionalEffect = BaseBattleAdditionalEffect.new(
 		self, effect_inst
 	);
-	battle_manager.event.next_turn.register_object(effect_inst).bind(effect_node);
-	effect_table[effect_inst.effect_name] = effect_node;
-	effect_node.timeout.connect(func() :
-		effect_table.erase(effect_node.effect_data.effect_name);
+	battle_manager.turn_end.connect(effect_node._on_next_turn);
+	effect_table[effect_inst.type] = effect_node;
+	effect_node.removed.connect(func() :
+		effect_table.erase(effect_node.effect_data.type);
 		effect_node.queue_free();
 	);
 	# 添加一个指定的效果给这个角色
+
+func _on_next_turn() : 
+	if (character_data.has_method(GamePlay.events_method_names.battle_next_turn)) :
+		character_data.call(GamePlay.events_method_names.battle_next_turn);
+	pass;

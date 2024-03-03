@@ -20,7 +20,7 @@ func trigger_event(method_name : String, args : Array = []) :
 	var obj : RegisterObject = null;
 	for i in obj_list.size() : 
 		obj = obj_list[loop_count];
-		if (obj == null) :
+		if (!is_instance_valid(obj)) :
 			obj_list.remove_at(loop_count);
 			continue;
 		obj.trigger(method_name, args);

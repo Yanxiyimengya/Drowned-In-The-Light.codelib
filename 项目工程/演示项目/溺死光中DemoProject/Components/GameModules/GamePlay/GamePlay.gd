@@ -3,6 +3,10 @@ extends Node;
 # 玩法模块
 # 实现玩法功能
 
+static var events_method_names : Dictionary = {
+	battle_next_turn = "on_next_turn"
+}
+
 var battle_manager : PackedScene = load("res://Components/GameModules/GamePlay/战斗模块/Battle/BattleManager/BattleManager.tscn");
 
 var register_effect_table : Dictionary = {};		# 注册的效果
@@ -20,14 +24,14 @@ func register_effect(type : String, display_name : String,
 	# type : Buff的类型
 	# effect_name : Buff的显示名称
 	# tip : Buff的提示
-func unregister_effect(type : String) :
-	if (!has_effect(type)) :
+func unregister_effect(_type : String) :
+	if (!has_effect(_type)) :
 		return false;
-	register_effect_table[type].erase(type);
+	register_effect_table[_type].erase(_type);
 	return true;
-func has_effect(type : String) :
-	for effect in register_effect_table :
-		if (effect.type == type) :
+func has_effect(_type : String) :
+	for effect_type in register_effect_table :
+		if (effect_type == _type) :
 			return true;
 	return false;
 	# 检查一个指定效果是否被注册

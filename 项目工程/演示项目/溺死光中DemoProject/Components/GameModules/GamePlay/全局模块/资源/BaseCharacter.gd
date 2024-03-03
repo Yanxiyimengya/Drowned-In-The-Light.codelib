@@ -20,5 +20,3 @@ var skill_pool : Dictionary = {};		# 角色技能池 Dictionary[BaseCharacterSki
 var accessories_list : Array[BaseAccessory] = [];		# 角色持有饰品列表
 var skill_list : Array[BaseCharacterSkill] = [];		# 角色持有技能列表
 
-func on_next_turn(battle_char : BattleCharacter) :
-	print(battle_char.effect_table);
