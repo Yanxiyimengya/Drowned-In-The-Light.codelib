@@ -17,7 +17,8 @@ func _ready():
 	var bt : PackedScene = GamePlay.battle_manager;
 	aaa = bt.instantiate();
 	add_child(aaa);
-	aaa.add_character(BaseCharacter.new(), 0);
+	GamePlay.register_effect("中毒","中毒","");
+	aaa.add_character(BaseCharacter.new(), 0).add_effect(GamePlay.get_effect_data("中毒",1,5));
 	pass;
 
 

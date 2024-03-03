@@ -1,47 +1,45 @@
 extends Node;
-
 # 负责管理战斗的战斗管理器
-signal next_turn; # 回合结束
-signal on_hit;
+
+signal turn_end;
 
 var turn_count : int = 0;	# 回合计数
-
 var friendly_characters : Array[BattleCharacter] = [];
 var enemy_characters : Array[BattleCharacter] = [];
 # 战斗时角色实例
 
 var event : Dictionary = {
-	next_turn = EventCaller.new(),
-	on_hit = EventCaller.new(),
+	battle_start = EventCaller.new(),
+	battle_end = EventCaller.new(),
+	next_turn = EventCaller.new()
 };
 
-func _on_battle_start() :
-	pass;
+func battle_start() :
+	event.next_turn.trigger_event("on_battle_start");
 	# 战斗开始函数
-
-func _on_battle_end() : 
-	pass;
+func battle_end() : 
+	event.next_turn.trigger_event("on_battle_end");
 	# 战斗结束函数
-
-func _on_next_turn() :
-	event.next_turn.trigger_event("on_next_turn");
-	pass;
+func goto_next_turn() :
+	turn_end.emit();
+	event.next_turn.trigger_event(GamePlay.events_method_names.battle_next_turn);
 	# 前往下一回合
 
 func _process(_delta):
 	if (Input.is_action_just_pressed("ui_up")) :
-		next_turn.emit();
+		goto_next_turn();
+		pass
 	pass;
 
-func add_character(character_data : BaseCharacter, forces : int = 0) :
+func add_character(character_data : BaseCharacter, forces : int = 0) -> BattleCharacter :
 	var character : BattleCharacter = BattleCharacter.new();
 	character.battle_manager = self;
-	character.base_character_data = character_data;		# 注，此处做修改，具体看BaseBattleCharacter那边，私以为可以一定程度上解决角色复制无用信息问题。
-	character.char_init();
-	event.next_turn.register_object(character.character_data).bind(character);
+	character.character_data = character_data.duplicate(true);
+	turn_end.connect(character._on_next_turn);
 	if (forces == 0) :
 		friendly_characters.append(character);
 		$"CharactersLayer/FriendlyCharacters".add_child(character);
 	elif (forces == 1) :
 		enemy_characters.append(character);
 		$"CharactersLayer/EnemyCharacters".add_child(character);
+	return character;

@@ -10,5 +10,3 @@ script = ExtResource("1_pxkah")
 [node name="EnemyCharacters" type="Node2D" parent="CharactersLayer"]
 
 [node name="FriendlyCharacters" type="Node2D" parent="CharactersLayer"]
-
-[connection signal="next_turn" from="." to="." method="_on_next_turn"]
