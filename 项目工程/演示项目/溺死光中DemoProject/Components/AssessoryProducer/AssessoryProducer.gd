@@ -3,7 +3,6 @@ extends Node;
 signal run_sign;
 
 @export var file_prelude_dest: String = "";
-var module_table: Dictionary = {};
 var case_module_table: Dictionary;
 
 func load_configuration_from_file(dest: String = file_prelude_dest) -> Dictionary:
@@ -27,8 +26,10 @@ func load_configuration_from_file(dest: String = file_prelude_dest) -> Dictionar
 	return case_table;
 
 # 对外暴露的方法
-func generate_assessory(master: BaseCharacter, kind: String, rarity: int) -> MemoryVestige:
+func generate_assessory(kind: String, rarity: int) -> MemoryVestige:
+	var module_table = case_module_table.duplicate(true);
 	var memory_vestige: MemoryVestige = null;
+
 	for key in module_table:
 		if key == kind:
 			memory_vestige = generate_designated_assessory(module_table[key], rarity);
@@ -36,7 +37,6 @@ func generate_assessory(master: BaseCharacter, kind: String, rarity: int) -> Mem
 	if (memory_vestige == null):
 		return ;
 	
-	memory_vestige.master = master;
 	return memory_vestige;
 
 func calculate_weight(table: Array) -> int:
@@ -48,8 +48,6 @@ func calculate_weight(table: Array) -> int:
 	return sum;
 
 func write_entry_to_assessory(assessory: MemoryVestige, entry_table: Array) -> MemoryVestige:
-	print(entry_table);
-
 	if entry_table == []:
 		return;
 	
@@ -79,7 +77,7 @@ func generate_designated_assessory(module_sub_tabel: Array, rarity: int) -> Memo
 		var selected_entry: Dictionary = {};
 
 		for entry in module_sub_tabel:
-			if (entry["weight"] == null or entry["name"] == null or entry["upper_limit"] == null or entry["lower_limit"] == null or entry["name"] == null):
+			if (entry["weight"] == null or entry["upper_limit"] == null or entry["lower_limit"] == null or entry["name"] == null):
 				continue;
 			
 			if (counter + entry["weight"] < random_num):
@@ -93,13 +91,11 @@ func generate_designated_assessory(module_sub_tabel: Array, rarity: int) -> Memo
 		selected_entry_saver.append(selected_entry);
 
 	write_entry_to_assessory(memory_vestige, selected_entry_saver);
-	module_table = load_configuration_from_file();
 	return memory_vestige;
 
 func _ready():
 	case_module_table = load_configuration_from_file();
-	module_table = case_module_table.duplicate(true);
-	var assessory: BaseAccessory = generate_assessory(BaseCharacter.new(), "死灭回游", 0);
+	var assessory: BaseAccessory = generate_assessory("死灭回游", 0);
 	print(assessory.base_add_attributes.get("attack"));
 	print(assessory.base_add_attributes.get("defense"));
 	print(assessory.base_add_attributes.get("speed"));
