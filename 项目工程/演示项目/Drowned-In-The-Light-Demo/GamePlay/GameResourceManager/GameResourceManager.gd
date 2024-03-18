@@ -44,14 +44,14 @@ func _init() :
 #region GameResourceManager的公开方法
 
 #region BasePropertys相关
-
-func register_base_property(id_name : String, name : String, default_value, registrants : String = "original") -> void :
+# The para is refering to the BasePropertyConfit class, and the registrants is the place id hold
+func register_base_property(id_name : String, item_name : String, default_value, registrants : String = "original") -> void :
 	var id : String = registrants + "." + id_name;
 	if (base_propertys.has(id)) :
 		return; # 重复注册
 	var property_cfg = self.BasePropertyConfig.new();
 	property_cfg.id = id;
-	property_cfg.name = name;
+	property_cfg.name = item_name;
 	property_cfg.default = default_value;
 	base_propertys[id] = property_cfg;
 	# 注册一个属性条目
